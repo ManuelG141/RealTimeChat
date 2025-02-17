@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealTimeChat</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header><h1 id="title">RealTimeChat Example</h1></header>
+
+    <section id="content">
+        <section id="current_chat">
+            <ul id="messages">
+                <!-- <li class="chat-message">
+                    <p>This is a small test</p>
+                    <small>User2</small>
+                </li>
+
+                <li class="user-message">
+                    <p>This is a small test</p>
+                    <small>User2</small>
+                </li> -->
+            </ul>
+            <form id="form-message" action="submit">
+                <input id="input-message" type="text" placeholder="Type a message">
+                <button id="send-message">Send</button>
+            </form>
+        </section>
+    </section>
+
+    <footer> <small>By ManuelG141</small> </footer>
+
+    <script src="./socket.io/socket.io.js"></script>
+    <script type="module" src="./socket_client.js"></script>
+</body>
+</html>
