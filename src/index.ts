@@ -12,6 +12,28 @@ const io = new Server(server)
 
 const users: string[] = []
 
+async function createTable (): Promise<void> {
+  const client = await pool.connect()
+  await client.query(`
+  CREATE TABLE IF NOT EXISTS messages (
+  id SERIAL PRIMARY KEY, 
+  content TEXT NOT NULL,
+  "user" TEXT NOT NULL, 
+  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+  `)
+  client.release()
+}
+
+createTable().then( // Create the table if it doesn't exist
+  () => {
+    console.log('Table "messages" is ready.')
+  }
+).catch(
+  (error: Error) => {
+    console.error('Error creating table:', error)
+  }
+)
+
 const staticPath = join(process.cwd(), 'public')
 app.use(express.static(staticPath))
 app.get('/', (_req, res) => {
